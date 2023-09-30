@@ -52,7 +52,7 @@ async function resolveDomainARB(name: string): Promise<{
   };
 }
 
-async function resolveDomianETH(name: `0x${string}`): Promise<{
+async function resolveDomainETH(name: string): Promise<{
   address: any;
 }> {
   const rpc = "https://eth.llamarpc.com";
@@ -128,3 +128,14 @@ async function revResolveETH(address: `0x${string}`): Promise<{
   console.log("name: %s, address: %s", name, address);
   return name;
 }
+
+export {
+  resolveDomainARB,
+  resolveDomainBNB,
+  resolveDomainBNBTest,
+  resolveDomainETH,
+  revResolveARB,
+  revResolveBNB,
+  revResolveBNBTest,
+  revResolveETH,
+};
