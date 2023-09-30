@@ -1,27 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  /* background-color: white; */
+  background-color: #fcfcff;
+  color: black;
+  font-family: 'Gabarito', cursive;
+}
+
+.hero {
+  margin-top: 40px;
+  /* color: ; */
+  background: url('../assets/hero-bg.gif') 0 0 no-repeat;
+  background-position-x: 50vw;
+  background-size: contain;
+  /* transform: rotate(20deg); */
+}
+
+.mask {
+  align-items: center;
+  width: 100%;
+  background-repeat: no-repeat;
+  -webkit-mask-image: url('../assets/mask.png');
+  mask-image: url('../assets/mask.png');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 40%;
+  mask-size: 40%;
+  -webkit-mask-position: 50px 0px;
+  mask-position: 50px 0px;
+  background-color: rgb(31, 180, 176);
+  /* background-color: rgb(80, 132, 168); */
+  /* background: url('../assets/'); */
+}
+
+.maskNav {
+  align-items: center;
+  width: 100%;
+  background-repeat: no-repeat;
+  -webkit-mask-image: url('../assets/mask.png');
+  mask-image: url('../assets/mask.png');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 50%;
+  mask-size: 50%;
+  -webkit-mask-position: 50px 0px;
+  mask-position: 50px 0px;
+  background-color: rgb(31, 180, 176);
+  /* background-color: rgb(80, 132, 168); */
+  /* background: url('../assets/'); */
 }
