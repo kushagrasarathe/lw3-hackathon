@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@moralisweb3/common-evm-utils": "^2.23.1",
     "@siddomains/sidjs": "^0.1.29",
     "ethers": "5.7.2",
+    "moralis": "^2.23.1",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
