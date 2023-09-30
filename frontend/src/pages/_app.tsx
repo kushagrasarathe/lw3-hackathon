@@ -3,17 +3,43 @@ import type { AppProps } from "next/app";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { mainnet, polygon, polygonMumbai, sepolia } from "wagmi/chains";
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  zora,
+  bsc,
+  bscTestnet,
+  arbitrumNova,
+  polygonMumbai,
+} from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
+import Navbar from "@/components/Navbar";
 
 const { chains, publicClient } = configureChains(
-  [mainnet, polygon, polygonMumbai, sepolia],
-  [alchemyProvider({ apiKey: "" }), publicProvider()]
+  [
+    // mainnet,
+    // polygon,
+    polygonMumbai,
+    // optimism,
+    arbitrum,
+    // base,
+    // zora,
+    bsc,
+    bscTestnet,
+    arbitrumNova,
+  ],
+  [
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID as string }),
+    publicProvider(),
+  ]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
+  appName: "Guardians of the CrossChain Galaxy",
   projectId: "YOUR_PROJECT_ID",
   chains,
 });
@@ -28,6 +54,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
+        <Navbar />
         <Component {...pageProps} />
       </RainbowKitProvider>
     </WagmiConfig>
