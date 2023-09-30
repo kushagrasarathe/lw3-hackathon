@@ -17,12 +17,9 @@
     "moralis": "^2.23.1",
     "react": "latest",
     "react-dom": "latest",
-<<<<<<< HEAD
     "streamr-client": "^8.5.5",
     "streamr-client-react": "^3.0.0-hkt.1",
-=======
     "next": "latest",
->>>>>>> f272e34668b21307d6e8e5fdcc1a75530010211e
     "viem": "^1.14.0",
     "wagmi": "^1.4.2"
   },
