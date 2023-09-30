@@ -1,8 +1,10 @@
-import bg from "@assets/hero-bg.gif";
+import bg from '@assets/hero-bg.gif'
 import mask from "@assets/mask.png";
 import Image from "next/image";
 
+
 export default function Home() {
+
   return (
     // hero
     <main className=" mt-2 relative  min-h-[85vh] flex items-center justify-center w-full">
@@ -47,5 +49,5 @@ export default function Home() {
         alt="bg"
       />
     </main>
-  );
+  )
 }

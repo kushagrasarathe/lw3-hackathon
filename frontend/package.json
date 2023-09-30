@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^1.0.11",
-    "next": "latest",
+    "@moralisweb3/common-evm-utils": "^2.23.1",
+    "@siddomains/sidjs": "^0.1.29",
+    "ethers": "5.7.2",
+    "moralis": "^2.23.1",
     "react": "latest",
     "react-dom": "latest",
+    "next": "latest",
     "viem": "^1.14.0",
     "wagmi": "^1.4.2"
   },
