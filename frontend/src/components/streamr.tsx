@@ -3,6 +3,7 @@ import { useSubscribe } from "streamr-client-react";
 import StreamrClient from "streamr-client";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount, usePublicClient } from "wagmi";
+const { StreamPermission } = require('streamr-client');
 
 const Streamr = () => {
   const [data, setData] = useState();
@@ -29,6 +30,22 @@ const Streamr = () => {
     console.log(stream.id);
   };
 
+  const getStream = async(streamId:any) => {
+    const stream = await client.getStream(streamId);
+    console.log(stream);
+  }
+
+  const writeAMessageToStream = async(streamId:string,message:any) => {
+    await client.publish(streamId, message, { timestamp: new Date(1546300800123) });
+  }
+
+  const grantPermissionToMessage = async (user:string) => {
+    await client.grantPermissions({
+        user: user,
+        permissions: [StreamPermission.PUBLISH],
+      });
+  }
+ 
   return (
     <div>
       <ConnectButton />
