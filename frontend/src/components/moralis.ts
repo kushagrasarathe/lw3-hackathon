@@ -7,6 +7,9 @@ import {
 } from "@/constants/contracts";
 import { EvmChainish } from "moralis/common-core";
 
+Moralis.start({
+  apiKey: "8jm7oAF328P1mSXJmbLRqybViO1jTvakuRCqNjhqwqXu96FeJxFPT290ezEXmfbA",
+});
 interface TokenReturnTyepe {
   token_address: string;
   contract_type: string;
@@ -21,18 +24,16 @@ async function getSpaceIDTokensAll(address: `0x${string}`): Promise<{
   arb_result: TokenReturnTyepe[];
   bnb_result: TokenReturnTyepe[];
 }> {
-  await Moralis.start({
-    apiKey: "YOUR_API_KEY",
-  });
-
   const eth_response = await Moralis.EvmApi.nft.getWalletNFTCollections({
     address,
     chain: EvmChain.ETHEREUM,
   });
 
   const eth_result = eth_response.toJSON().result;
-  eth_result.filter((token) => {
-    token.token_address == ENS_CONTRACT;
+  const eth_result_final = await eth_result.filter((token) => {
+    return (
+      `${token.token_address.toLowerCase()}` == `${ENS_CONTRACT.toLowerCase()}`
+    );
   });
 
   const bnb_response = await Moralis.EvmApi.nft.getWalletNFTCollections({
@@ -41,8 +42,8 @@ async function getSpaceIDTokensAll(address: `0x${string}`): Promise<{
   });
 
   const bnb_result = bnb_response.toJSON().result;
-  bnb_result.filter((token) => {
-    token.token_address == BNB_CONTRACT;
+  const bnb_result_final = bnb_result.filter((token) => {
+    return token.token_address.toLowerCase() == BNB_CONTRACT.toLowerCase();
   });
 
   const arb_response = await Moralis.EvmApi.nft.getWalletNFTCollections({
@@ -51,9 +52,21 @@ async function getSpaceIDTokensAll(address: `0x${string}`): Promise<{
   });
 
   const arb_result = arb_response.toJSON().result;
-  arb_result.filter((token) => {
-    token.token_address == ARB_CONTRACT;
+  const arb_result_final = arb_result.filter((token) => {
+    return token.token_address.toLowerCase() == ARB_CONTRACT.toLowerCase();
   });
+
+  console.log({
+    eth_result_final,
+    arb_result_final,
+    bnb_result_final,
+  });
+
+  // console.log({
+  //   eth_result,
+  //   arb_result,
+  //   bnb_result,
+  // });
 
   return {
     eth_result,
@@ -113,3 +126,5 @@ async function getSpaceIDMetadata(
   const result = response?.toJSON();
   return result;
 }
+
+export { getSpaceIDMetadata, getSpaceIDTokensAll, getSpaceIDTokensChain };
