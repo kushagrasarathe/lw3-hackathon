@@ -18,6 +18,7 @@ import {
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import Navbar from "@/components/Navbar";
+import { usePathname } from "next/navigation";
 
 const { chains, publicClient } = configureChains(
   [
@@ -51,9 +52,12 @@ const wagmiConfig = createConfig({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const path = usePathname();
+
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
+        {/* {path !== "/chat" && <Navbar />} */}
         <Navbar />
         <Component {...pageProps} />
       </RainbowKitProvider>

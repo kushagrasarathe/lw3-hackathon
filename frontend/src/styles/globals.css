@@ -10,14 +10,21 @@ body {
   background-color: #fcfcff;
   color: black;
   font-family: 'Gabarito', cursive;
+  /* background: url('../assets/bg1.jpg') 0 0 no-repeat;
+  background-size: cover;
+  background-color: ; */
 }
 
 .hero {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   /* color: ; */
-  background: url('../assets/hero-bg.gif') 0 0 no-repeat;
-  background-position-x: 50vw;
-  background-size: contain;
+  /* background: url('../assets/hero-bg.gif') 0 0 no-repeat;
+  background: url('../assets/mask2.png') 0 0 no-repeat;
+  background: url('../assets/bg1.jpg') 0 0 no-repeat;
+  background-size: cover; */
+  /* background-position: 20vw 20vh; */
+  /* background-position-x: 50vw; */
+  /* background-size: contain; */
   /* transform: rotate(20deg); */
 }
 
