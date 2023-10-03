@@ -7,9 +7,6 @@ import {
 } from "@/constants/contracts";
 import { EvmChainish } from "moralis/common-core";
 
-Moralis.start({
-  apiKey: "8jm7oAF328P1mSXJmbLRqybViO1jTvakuRCqNjhqwqXu96FeJxFPT290ezEXmfbA",
-});
 interface TokenReturnTyepe {
   token_address: string;
   contract_type: string;
@@ -24,6 +21,9 @@ async function getSpaceIDTokensAll(address: `0x${string}`): Promise<{
   arb_result: TokenReturnTyepe[];
   bnb_result: TokenReturnTyepe[];
 }> {
+  await Moralis.start({
+    apiKey: "8jm7oAF328P1mSXJmbLRqybViO1jTvakuRCqNjhqwqXu96FeJxFPT290ezEXmfbA",
+  });
   const eth_response = await Moralis.EvmApi.nft.getWalletNFTCollections({
     address,
     chain: EvmChain.ETHEREUM,
@@ -78,34 +78,34 @@ async function getSpaceIDTokensAll(address: `0x${string}`): Promise<{
 async function getSpaceIDTokensChain(
   address: `0x${string}`,
   chain: any
-): Promise<TokenReturnTyepe[] | undefined> {
-  await Moralis.start({
-    apiKey: "YOUR_API_KEY",
-  });
-
-  const response = await Moralis.EvmApi.nft.getWalletNFTCollections({
+): Promise<any> {
+  const response = await Moralis.EvmApi.nft.getWalletNFTs({
     address,
     chain: chain,
   });
-
+  console.log(chain);
   let contractAddress: `0x${string}`;
 
-  if (chain == EvmChain.ETHEREUM) {
+  if (chain === 1) {
     contractAddress = ENS_CONTRACT;
-  } else if (chain == EvmChain.BSC) {
+  } else if (chain === 56) {
     contractAddress = BNB_CONTRACT;
-  } else if (chain == EvmChain.ARBITRUM) {
+  } else if (chain === 42161) {
     contractAddress = ARB_CONTRACT;
   } else {
     return;
   }
+  console.log;
 
   const result = response.toJSON().result;
-  result.filter((token) => {
-    token.token_address == contractAddress;
+  console.log(result);
+  // console.log(contractAddress);
+  const result_final = result.filter((token) => {
+    return token.token_address.toLowerCase() == contractAddress.toLowerCase();
   });
 
-  return result;
+  console.log(result_final);
+  return result_final;
 }
 
 async function getSpaceIDMetadata(

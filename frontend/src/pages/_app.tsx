@@ -22,9 +22,9 @@ import { usePathname } from "next/navigation";
 
 const { chains, publicClient } = configureChains(
   [
-    // mainnet,
-    polygon,
-    polygonMumbai,
+    mainnet,
+    // polygon,
+    // polygonMumbai,
     // optimism,
     arbitrum,
     // base,

@@ -1,6 +1,26 @@
 const SID = require("@siddomains/sidjs").default;
 const SIDfunctions = require("@siddomains/sidjs");
-const ethers = require("ethers");
+import { ethers } from "ethers";
+
+async function resolveDomain(name: string): Promise<
+  | {
+      address: any;
+    }
+  | undefined
+> {
+  if (typeof window.ethereum !== "undefined") {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const chainId = (await provider.getNetwork()).chainId;
+    // console.log(chainId, provider);
+    const sid = new SID({
+      provider,
+      sidAddress: SIDfunctions.getSidAddress(chainId),
+    });
+    const address = await sid.name(name).getAddress(); // 0x123
+    console.log("name: %s, address: %s", name, address);
+    return address;
+  }
+}
 
 async function resolveDomainBNBTest(name: string): Promise<{
   address: any;
@@ -129,7 +149,29 @@ async function revResolveETH(address: `0x${string}`): Promise<{
   return name;
 }
 
+async function revResolve(address: `0x${string}`): Promise<
+  | {
+      name: any;
+    }
+  | undefined
+> {
+  if (typeof window.ethereum !== "undefined") {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const chainId = (await provider.getNetwork()).chainId;
+    // console.log(chainId, provider);
+    const sid = new SID({
+      provider,
+      sidAddress: SIDfunctions.getSidAddress(chainId),
+    });
+    const name = await sid.getName(address);
+    console.log(name);
+    console.log("name: %s, address: %s", name.name, address);
+    return name.name;
+  }
+}
+
 export {
+  resolveDomain,
   resolveDomainARB,
   resolveDomainBNB,
   resolveDomainBNBTest,
@@ -138,4 +180,5 @@ export {
   revResolveBNB,
   revResolveBNBTest,
   revResolveETH,
+  revResolve,
 };
