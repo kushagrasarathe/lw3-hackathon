@@ -16,10 +16,10 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const { chain } = useNetwork();
 
-  React.useEffect(() => {
-    resolveDomain("test.arb");
-    revResolve("0x4e659bc3fc954631785d4a9363646322b080dfc4");
-  }, [chain]);
+  // React.useEffect(() => {
+  //   resolveDomain("0xdhruv.eth");
+  //   revResolve("0x4e659bc3fc954631785d4a9363646322b080dfc4");
+  // }, [chain]);
 
   // 0x842bf693112a0e70f3198ea0d93cf5231d1e7dd3 -> worldfirst.arb
   //  71089.bnb

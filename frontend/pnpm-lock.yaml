@@ -5,6 +5,7 @@ specifiers:
   '@moralisweb3/common-evm-utils': ^2.23.1
   '@rainbow-me/rainbowkit': ^1.0.11
   '@siddomains/sidjs': ^0.1.29
+  '@tokenbound/sdk': ^0.3.7
   '@types/node': latest
   '@types/react': latest
   '@types/react-dom': latest
@@ -29,6 +30,7 @@ dependencies:
   '@moralisweb3/common-evm-utils': 2.23.1
   '@rainbow-me/rainbowkit': 1.0.11_xoxqi5zhkbatyetncwbu74g26e
   '@siddomains/sidjs': 0.1.29_ethers@5.7.2
+  '@tokenbound/sdk': 0.3.7_typescript@5.2.2
   ethers: 5.7.2
   moralis: 2.23.1
   next: 13.5.4_biqbaboplfbrettd7655fr4n2y
@@ -1758,6 +1760,17 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false
+
+  /@tokenbound/sdk/0.3.7_typescript@5.2.2:
+    resolution: {integrity: sha512-nBP0cfNzNrqCRUTuNNOUaqPEca2tTpDip9NSi5sngCycpvI83C2DQEY810+x4tvTInlLBWwu+9M8FRgogmiRSA==}
+    dependencies:
+      viem: 1.14.0_typescript@5.2.2
+    transitivePeerDependencies:
+      - bufferutil
+      - typescript
+      - utf-8-validate
+      - zod
     dev: false
 
   /@tootallnate/once/1.1.2:

@@ -158,7 +158,7 @@ async function revResolve(address: `0x${string}`): Promise<
   if (typeof window.ethereum !== "undefined") {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const chainId = (await provider.getNetwork()).chainId;
-    console.log(chainId, provider);
+    // console.log(chainId, provider);
     const sid = new SID({
       provider,
       sidAddress: SIDfunctions.getSidAddress(chainId),
@@ -166,7 +166,7 @@ async function revResolve(address: `0x${string}`): Promise<
     const name = await sid.getName(address);
     console.log(name);
     console.log("name: %s, address: %s", name.name, address);
-    return name;
+    return name.name;
   }
 }
 
