@@ -1,10 +1,12 @@
 "use client";
 import { Button, Input, Option, Select } from "@material-tailwind/react";
+import { onChange } from "@material-tailwind/react/types/components/select";
 import React, { useState } from "react";
 
 export default function Pay() {
   const [amount, setAmount] = useState<number | null>(null);
   const [receiver, setReceiver] = useState<string | null>(null);
+  const [selectedToken, setSelectedToken] = useState<string>("");
 
   const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
@@ -23,6 +25,14 @@ export default function Pay() {
     setReceiver(inputValue);
   };
 
+  const handleTokenChange = (event: any) => {
+    const newValue = event.target.value;
+
+    if (newValue) {
+      setSelectedToken(newValue);
+    }
+  };
+
   return (
     <div className=" min-h-screen flex justify-center items-center ">
       <div className=" bg-white w-6/12 max-w-xl gap-y-5 flex flex-col items-center justify-center border border-borderPrimary rounded-xl p-8">
@@ -38,13 +48,26 @@ export default function Pay() {
           value={receiver || ""}
           onChange={handleReceiverChange}
         />
-        <Select label="Select Version">
-          <Option>Material Tailwind HTML</Option>
-          <Option>Material Tailwind React</Option>
-          <Option>Material Tailwind Vue</Option>
-          <Option>Material Tailwind Angular</Option>
-          <Option>Material Tailwind Svelte</Option>
-        </Select>
+        <label className=" self-start -mb-3" htmlFor="">
+          {" "}
+          Select Token
+        </label>
+        <select
+          className=" w-full p-3 bg-transparent border border-gray-400 rounded-lg"
+          value={selectedToken}
+          onChange={handleTokenChange}
+        >
+          <option defaultChecked value="">
+            Select an option
+          </option>
+          <option value="usdc">USDC</option>
+          <option value="usdt">USDT</option>
+          <option value="eth">ETH</option>
+          <option value="matic">MATIC</option>
+        </select>
+        {/* {selectedToken && (
+          <p className=" text-black text-xl">You selected: {selectedToken}</p>
+        )} */}
         <Input
           crossOrigin={false}
           size="lg"
