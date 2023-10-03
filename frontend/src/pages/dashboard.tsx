@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { TokenboundClient } from "@tokenbound/sdk";
+import React, { useState, useEffect } from "react";
 import {
   Tabs,
   TabsHeader,
@@ -8,13 +9,48 @@ import {
 } from "@material-tailwind/react";
 import img from "@assets/nft.jpg";
 import Card from "@/components/Card";
+import { useAccount, useWalletClient, useNetwork } from "wagmi";
+import { parseEther } from "viem";
 
 export default function Dashboard() {
+  const { address, isConnecting, isDisconnected } = useAccount();
+  const { data: walletClient } = useWalletClient();
+  const { chain } = useNetwork();
+  const [erc6551Account, setErc6551Account] = useState<`0x${string}`>();
+
+  const sendTransaction = async (
+    to: `0x${string}`,
+    value: number,
+    data: string
+  ) => {
+    if (!walletClient) return;
+    if (!chain) return;
+
+    const tokenboundClient = new TokenboundClient({
+      walletClient,
+      chainId: chain?.id,
+    });
+    if (!erc6551Account) return;
+
+    const executedCall = await tokenboundClient.executeCall({
+      account: erc6551Account,
+      to: to,
+      value: parseEther(value.toString()),
+      data: data,
+    });
+
+    console.log(executedCall);
+  };
+
   return (
     <div className=" w-full min-h-screen">
-
-      <h1 className=" text-center mt-16 text-lg">User Current SpaceID: <span className=" underline">kushagra.sarathe</span></h1>
-      <div className=" text-center mt-4 text-lg">User Wallet Balance: <span className=" underline">500 USDC</span></div>
+      <h1 className=" text-center mt-16 text-lg">
+        User Current SpaceID:{" "}
+        <span className=" underline">kushagra.sarathe</span>
+      </h1>
+      <div className=" text-center mt-4 text-lg">
+        User Wallet Balance: <span className=" underline">500 USDC</span>
+      </div>
       <Tabs className=" mt-12 " value="nfts">
         <TabsHeader className=" max-w-xl mx-auto">
           <Tab value={"nfts"}>

@@ -52,6 +52,7 @@ export default function Register() {
       const data = await revResolve(
         `0xB72a04B01BB80DfD6a42ea8E0907B892286113F2`
       );
+      // address
       if (data) {
         if (typeof data !== "string") return;
         setSpaceID(data);
@@ -69,6 +70,7 @@ export default function Register() {
         `0xB72a04B01BB80DfD6a42ea8E0907B892286113F2`,
         chain?.id
       );
+      // address
       if (!nftData) return;
       setTokenData({
         tokenContract: nftData[0].token_address,
@@ -82,10 +84,11 @@ export default function Register() {
   const registerERC6551 = async () => {
     try {
       if (!walletClient) return;
+      if (!chain) return;
 
       const tokenboundClient = new TokenboundClient({
         walletClient,
-        chainId: 1,
+        chainId: chain?.id,
       });
 
       if (!tokenData) {
