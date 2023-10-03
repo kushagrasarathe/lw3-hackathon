@@ -16,16 +16,25 @@ const Streamr = () => {
     auth: {
       ethereum: window.ethereum,
     },
+    encryption: {
+      litProtocolEnabled: true,
+      litProtocolLogging: false,
+    },
   });
 
   const startSubscribing = (stream: any) => {
     const streamId = stream;
-    client.subscribe(streamId, {
-      last: 100,
-    },
-    (msg:any) => {
-      console.log(msg);
-    });
+    client.subscribe(
+      {
+        id: streamId,
+        resend: {
+          last: 10,
+        },
+      },
+      (msg: any) => {
+        console.log(msg);
+      }
+    );
   };
 
   const createStream = async (chatName: string) => {
@@ -63,7 +72,7 @@ const Streamr = () => {
 
   const getAllPermissions = async () => {
     const permissions = await client.getPermissions(
-      ""
+      "0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/mychat"
     );
     console.log(permissions);
   };
@@ -72,7 +81,7 @@ const Streamr = () => {
     <div className="flex flex-col">
       <button
         onClick={() =>
-          startSubscribing("")
+          startSubscribing("0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/mychat")
         }
       >
         subscribe
@@ -81,8 +90,8 @@ const Streamr = () => {
       <button
         onClick={() =>
           writeAMessageToStream(
-            "",
-            "hello"
+            "0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/mychat",
+            "yo"
           )
         }
       >
@@ -98,7 +107,7 @@ const Streamr = () => {
       <button
         onClick={() =>
           grantPermissionToMessage(
-            "",
+            "0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/mychat",
             "0x8d7A86A304890abaA30Ef6a2aAd037531C071D37"
           )
         }
