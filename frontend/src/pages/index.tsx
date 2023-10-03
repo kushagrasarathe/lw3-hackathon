@@ -1,15 +1,30 @@
 import bg from "@assets/hero-bg.gif";
 import mask from "@assets/mask.png";
 import Image from "next/image";
-import { resolveDomainETH, revResolveETH } from "@/components/spaceID";
+import {
+  resolveDomain,
+  resolveDomainETH,
+  revResolve,
+  revResolveETH,
+} from "@/components/spaceID";
 import { Inter } from "next/font/google";
 import * as React from "react";
+import { useNetwork } from "wagmi";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  revResolveETH("0xB72a04B01BB80DfD6a42ea8E0907B892286113F2");
+  const { chain } = useNetwork();
 
+  React.useEffect(() => {
+    resolveDomain("test.arb");
+    revResolve("0x4e659bc3fc954631785d4a9363646322b080dfc4");
+  }, [chain]);
+
+  // 0x842bf693112a0e70f3198ea0d93cf5231d1e7dd3 -> worldfirst.arb
+  //  71089.bnb
+
+  // get the Address and check the current chain
   return (
     // bg-gradient-to-r from-cyan-50 to-cyan-100
     <div className="bg-[#fed385">
