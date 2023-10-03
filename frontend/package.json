@@ -9,17 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@rainbow-me/rainbowkit": "^1.0.11",
+    "@material-tailwind/react": "^2.1.2",
     "@moralisweb3/common-evm-utils": "^2.23.1",
     "@rainbow-me/rainbowkit": "^1.0.11",
     "@siddomains/sidjs": "^0.1.29",
     "ethers": "5.7.2",
     "moralis": "^2.23.1",
+    "next": "latest",
     "react": "latest",
     "react-dom": "latest",
     "streamr-client": "^8.5.5",
     "streamr-client-react": "^3.0.0-hkt.1",
-    "next": "latest",
     "viem": "^1.14.0",
     "wagmi": "^1.4.2"
   },
