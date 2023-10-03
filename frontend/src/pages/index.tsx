@@ -2,6 +2,7 @@ import bg from "@assets/hero-bg.gif";
 import mask from "@assets/mask.png";
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import * as React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
