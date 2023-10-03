@@ -4,28 +4,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+
+  --secondary-glow: conic-gradient(at 100% 100%, rgb(165, 243, 252), rgb(196, 181, 253));
+  /* Alternative color combinations for --third-glow */
+
+  --third-glow: conic-gradient(at 50% 0%, rgb(196, 181, 253), rgb(167, 139, 250))
+}
+
+
+
 
 body {
   /* background-color: white; */
   background-color: #fcfcff;
+  /* background-color: #fed385; */
   color: black;
   font-family: 'Gabarito', cursive;
   /* background: url('../assets/bg1.jpg') 0 0 no-repeat;
   background-size: cover;
   background-color: ; */
-}
-
-.hero {
-  /* margin-top: 40px; */
-  /* color: ; */
-  /* background: url('../assets/hero-bg.gif') 0 0 no-repeat;
-  background: url('../assets/mask2.png') 0 0 no-repeat;
-  background: url('../assets/bg1.jpg') 0 0 no-repeat;
-  background-size: cover; */
-  /* background-position: 20vw 20vh; */
-  /* background-position-x: 50vw; */
-  /* background-size: contain; */
-  /* transform: rotate(20deg); */
 }
 
 .mask {
@@ -41,23 +39,35 @@ body {
   -webkit-mask-position: 50px 0px;
   mask-position: 50px 0px;
   background-color: rgb(31, 180, 176);
-  /* background-color: rgb(80, 132, 168); */
-  /* background: url('../assets/'); */
+  /* color: #34353c; */
 }
 
-.maskNav {
-  align-items: center;
-  width: 100%;
-  background-repeat: no-repeat;
-  -webkit-mask-image: url('../assets/mask.png');
-  mask-image: url('../assets/mask.png');
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 50%;
-  mask-size: 50%;
-  -webkit-mask-position: 50px 0px;
-  mask-position: 50px 0px;
-  background-color: rgb(31, 180, 176);
-  /* background-color: rgb(80, 132, 168); */
-  /* background: url('../assets/'); */
+
+body::before,
+body::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  opacity: 0.8
+}
+
+body::before {
+  background: var(--third-glow);
+  border-radius: 50%;
+  width: 50vw;
+  height: 50vw;
+  margin-left: -200px;
+  filter: blur(90px);
+  top: calc(50vh - 50vw/2);
+  left: calc(50vw);
+}
+
+body::after {
+  background: var(--secondary-glow);
+  border-radius: 50%;
+  width: 500px;
+  height: 700px;
+  filter: blur(90px);
+  top: calc(50vh - 50vw/2);
+  left: calc(50vw - 50vw/2);
 }

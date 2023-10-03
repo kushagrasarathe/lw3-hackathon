@@ -8,8 +8,9 @@ export default function Home() {
 
   return (
     // bg-gradient-to-r from-cyan-50 to-cyan-100
-    <div className="bg-[#fed385]">
+    <div className="bg-[#fed385">
       {/* // hero */}
+      {/* bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-violet-300 to-violet-400 */}
       <main className=" hero  mt2 relative md:w-11/12 mx-auto  min-h-screen flex flex-col items-center justify-center w-full">
         <div className="   -mt-24 relative h-full flex items-center justify-between  w-full font-bold tracking-wide">
           <div className=" w-full z-20 text-center ">
@@ -40,7 +41,7 @@ export default function Home() {
             </p>
             <button className=" text-white font-normal tracking-wide text-lg mt-5 self-start z-20 bg-[#130f06] cursor-pointer rounded-md active:scale-95 transition-all ease-in-out px-3 py-2 ">
               {/* <span className="text-transparent font-normal tracking-wide text-lg bg-clip-text bg-gradient-to-r from-black -400 to-black -600"> */}
-                Get Started
+              Get Started
               {/* </span> */}
             </button>
           </div>

@@ -10,6 +10,10 @@ const routes = [
     path: "/register",
   },
   {
+    label: "Pay",
+    path: "/pay",
+  },
+  {
     label: "Dashboard",
     path: "/dashboard",
   },
@@ -27,8 +31,8 @@ export default function Navbar() {
   const { address, isConnecting, isDisconnected } = useAccount();
 
   return (
-    <div className=" fixedtop-0 bg-[#fed385] bg-[#fcfcff bg-opacity- backdrop-blur-md z-50 w-full flex items-center justify-between px-16 pt-8 pb-3">
-      <div className=" text-3xl font-semibold">SecureID</div>
+    <div className=" fixedtop-0 bg-[#fed385 bg-[#fcfcff bg-opacity- backdrop-blur-md z-50 w-full flex items-center justify-between px-16 pt-8 pb-3">
+      <Link href={'/'} className=" cursor-pointer text-3xl font-semibold">SecureID</Link>
       <div className=" flex items-center justify-between gap-x-6">
         {!isDisconnected ? (
           <div className=" flex items-center justify-between gap-x-6">
@@ -41,6 +45,7 @@ export default function Navbar() {
                 {path.label}
               </Link>
             ))}
+            <ConnectButton />
           </div>
         ) : (
           <ConnectButton />
