@@ -86,7 +86,7 @@ const Streamr = () => {
       >
         subscribe
       </button>
-      <button onClick={() => createStream("mychat")}>create</button>
+      <button onClick={() => createStream("chat")}>create</button>
       <button
         onClick={() =>
           writeAMessageToStream(
