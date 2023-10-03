@@ -1,4 +1,5 @@
 import React from "react";
+import Streamr from "./streamr";
 
 export default function ChatWindow() {
   return (
@@ -51,6 +52,9 @@ export default function ChatWindow() {
                       </div>
                       <div className="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
                         <div>Hey How are you today?</div>
+                        <div>
+                          <Streamr/>
+                        </div>
                       </div>
                     </div>
                   </div>
