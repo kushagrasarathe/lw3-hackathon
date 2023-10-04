@@ -7,6 +7,9 @@ import {
 } from "@/components/spaceID";
 import { Button, Input, Option, Select } from "@material-tailwind/react";
 import { onChange } from "@material-tailwind/react/types/components/select";
+// import WormholeBridge, {
+//   WormholeConnectConfig,
+// } from "@wormhole-foundation/wormhole-connect";
 import React, { useState } from "react";
 
 export default function Pay() {
@@ -14,6 +17,12 @@ export default function Pay() {
   const [receiver, setReceiver] = useState<string | null>(null);
   const [selectedToken, setSelectedToken] = useState<string>("");
   const [resolvedAddress, setResolvedAddress] = useState<`0x${string}`>();
+
+  // const config: WormholeConnectConfig = {
+  //   env: "mainnet",
+  //   networks: ["arbitrum", "bsc", "ethereum"],
+  //   mode: 'light'
+  // };
 
   const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
@@ -64,6 +73,8 @@ export default function Pay() {
       setResolvedAddress(data?.arbitrum1_address);
     }
   };
+
+  const transferFundViaBridge = async () => {};
 
   return (
     <div className=" min-h-screen flex justify-center items-center ">
@@ -126,6 +137,7 @@ export default function Pay() {
           SearchDomain
         </Button>
       </div>
+      {/* <WormholeBridge config={config} /> */}
     </div>
   );
 }
