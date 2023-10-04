@@ -3,6 +3,9 @@ lockfileVersion: 5.4
 specifiers:
   '@material-tailwind/react': ^2.0.6
   '@moralisweb3/common-evm-utils': ^2.23.1
+  '@polybase/auth': ^0.6.6
+  '@polybase/client': ^0.6.6
+  '@polybase/eth': ^0.6.6
   '@rainbow-me/rainbowkit': ^1.0.11
   '@siddomains/sidjs': ^0.1.29
   '@tokenbound/sdk': ^0.3.7
@@ -28,6 +31,9 @@ specifiers:
 dependencies:
   '@material-tailwind/react': 2.1.2_biqbaboplfbrettd7655fr4n2y
   '@moralisweb3/common-evm-utils': 2.23.1
+  '@polybase/auth': 0.6.6
+  '@polybase/client': 0.6.6
+  '@polybase/eth': 0.6.6
   '@rainbow-me/rainbowkit': 1.0.11_xoxqi5zhkbatyetncwbu74g26e
   '@siddomains/sidjs': 0.1.29_ethers@5.7.2
   '@tokenbound/sdk': 0.3.7_typescript@5.2.2
@@ -1329,6 +1335,47 @@ packages:
 
   /@openzeppelin/contracts/4.9.3:
     resolution: {integrity: sha512-He3LieZ1pP2TNt5JbkPA4PNT9WC3gOTOlDcFGJW4Le4QKqwmiNJCRt44APfxMxvq7OugU/cqYuPcSBzOw38DAg==}
+    dev: false
+
+  /@polybase/auth/0.6.6:
+    resolution: {integrity: sha512-Gk3X9yykj+coRg38EVhIfV+7CgsUakltGHxC3BlIUv2iYab1mgKF2Mh00rNhGGRRuIHQ0zzT6dkD6Cj9COBuKQ==}
+    dependencies:
+      penpal: 6.2.2
+    dev: false
+
+  /@polybase/client/0.6.6:
+    resolution: {integrity: sha512-yUlNHmvvKkpIrYRFgFHr6uBdWHiUtw+OhBCMCRUyFvlVbSStEJ3B2fbsT04LWX6xTErd4L//xyTyNSUUltwbrg==}
+    dependencies:
+      '@polybase/eth': 0.6.6
+      '@polybase/polylang': 0.6.0
+      axios: 0.27.2
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
+  /@polybase/eth/0.6.6:
+    resolution: {integrity: sha512-c2aTG8eCVDIwUuFkkUHFzdNN7KrWxn6q8QFGcxlorl2wduz+EMpldyfK/l3caWkj2vI8W25LAivk9V/RDEjyUA==}
+    dependencies:
+      '@ethersproject/keccak256': 5.7.0
+      '@ethersproject/strings': 5.7.0
+      '@polybase/util': 0.6.6
+    dev: false
+
+  /@polybase/polylang/0.6.0:
+    resolution: {integrity: sha512-yk2JbnNkJDKs2Gnjedra7H1b8H7MCZKaOlo3n+OjjcTlqsZq8Iz472hE0umxDi74zxcsMnIb/qsR6oj6fGKrpw==}
+    engines: {node: '>=16.0.0'}
+    dev: false
+
+  /@polybase/util/0.6.6:
+    resolution: {integrity: sha512-4DiFpJZX/5A/zlPEVVlwvI5U7S5h3jJX9qUU3oOAUuehf+CZijoIfztj264SZHQya8nWr5qeTOraogC8Mcfq6A==}
+    dependencies:
+      '@ethersproject/bytes': 5.7.0
+      '@ethersproject/signing-key': 5.7.0
+      elliptic: 6.5.4
+      process: 0.11.10
+      secp256k1: 4.0.3
+      tweetnacl: 1.0.3
+      tweetnacl-util: 0.15.1
     dev: false
 
   /@rainbow-me/rainbowkit/1.0.11_xoxqi5zhkbatyetncwbu74g26e:
@@ -2880,6 +2927,15 @@ packages:
     resolution: {integrity: sha512-/dlp0fxyM3R8YW7MFzaHWXrf4zzbr0vaYb23VBFCl83R7nWNPg/yaQw2Dc8jzCMmDVLhSdzH8MjrsuIUuvX+6g==}
     engines: {node: '>=4'}
     dev: true
+
+  /axios/0.27.2:
+    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
+    dependencies:
+      follow-redirects: 1.15.3
+      form-data: 4.0.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /axios/1.5.1:
     resolution: {integrity: sha512-Q28iYCWzNHjAm+yEAot5QaAMxhMghWLFVf7rRdwhUI+c2jix2DUXjAHXVi+s1ibs3mjPO/cCgbA++3BjD0vP/A==}
@@ -7069,6 +7125,10 @@ packages:
       sha.js: 2.4.11
     dev: false
 
+  /penpal/6.2.2:
+    resolution: {integrity: sha512-RQD7hTx14/LY7QoS3tQYO3/fzVtwvZI+JeS5udgsu7FPaEDjlvfK9HBcme9/ipzSPKnrxSgacI9PI7154W62YQ==}
+    dev: false
+
   /performance-now/2.1.0:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
     dev: false
@@ -8753,8 +8813,16 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
+  /tweetnacl-util/0.15.1:
+    resolution: {integrity: sha512-RKJBIj8lySrShN4w6i/BonWp2Z/uxwC3h4y7xsRrpP59ZboCd0GpEVsOnMDYLMmKBpYhb5TgHzZXy7wTfYFBRw==}
+    dev: false
+
   /tweetnacl/0.14.5:
     resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==}
+    dev: false
+
+  /tweetnacl/1.0.3:
+    resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
     dev: false
 
   /type-check/0.4.0:

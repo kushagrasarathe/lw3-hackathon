@@ -1,6 +1,7 @@
 "use client";
 
 import { getSpaceIDTokensChain } from "@/components/moralis";
+import { createUser, deleteUser, setERC6551Acc } from "@/components/polybase";
 import { revResolve } from "@/components/spaceID";
 import { contractABI, contractAddress } from "@/utils/constants";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
@@ -20,7 +21,7 @@ export default function Register() {
 
   const [selectedToken, setSelectedToken] = useState<string>("");
   const [tokenData, setTokenData] = useState<{
-    tokenContract: string;
+    tokenContract: `0x${string}`;
     tokenId: string;
   }>();
   const [erc6551Account, setErc6551Account] = useState<`0x${string}`>();
@@ -81,6 +82,23 @@ export default function Register() {
     }
   };
 
+  const storeUserData = async () => {
+    try {
+      if (!tokenData) return;
+      if (!address) return;
+      if (!spaceID) return;
+
+      await createUser(
+        address,
+        spaceID,
+        tokenData.tokenContract,
+        tokenData.tokenId
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const registerERC6551 = async () => {
     try {
       if (!walletClient) return;
@@ -103,6 +121,9 @@ export default function Register() {
 
       console.log(account);
       setErc6551Account(account);
+      if (!address) return;
+
+      await setERC6551Acc(address, account);
 
       // We have to store this relation somewhere of Space ID with the tokenData and ERC6551 account
     } catch (error) {
@@ -141,9 +162,18 @@ export default function Register() {
             >
               Register
             </button>
-            {/* {tokenData && tokenData.tokenContract}
             <br />
-            {tokenData && tokenData.tokenId} */}
+            <button
+              onClick={() => {
+                storeUserData();
+              }}
+            >
+              Store
+            </button>
+            <br />
+            {tokenData && tokenData.tokenContract}
+            <br />
+            {tokenData && tokenData.tokenId}
             {/* <select
               name="space_id"
               className=" mt-2 w-full p-3 bg-transparent border border-gray-400 rounded-lg"

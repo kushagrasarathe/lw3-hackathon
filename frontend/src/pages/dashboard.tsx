@@ -11,6 +11,7 @@ import img from "@assets/nft.jpg";
 import Card from "@/components/Card";
 import { useAccount, useWalletClient, useNetwork } from "wagmi";
 import { parseEther } from "viem";
+import { getUser } from "@/components/polybase";
 
 export default function Dashboard() {
   const { address, isConnecting, isDisconnected } = useAccount();
@@ -40,6 +41,15 @@ export default function Dashboard() {
     });
 
     console.log(executedCall);
+  };
+  useEffect(() => {
+    if (address) {
+      getUserData(address);
+    }
+  }, []);
+
+  const getUserData = (address: `0x${string}`) => {
+    const data = getUser(address);
   };
 
   return (
