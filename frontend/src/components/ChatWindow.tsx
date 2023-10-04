@@ -24,7 +24,7 @@ export default function ChatWindow() {
     }
     if (xmtp_client) {
       listConverstaions();
-      fetchAllMessages();
+      // fetchAllMessages();
     } else {
       initXmtp();
     }
@@ -77,11 +77,11 @@ export default function ChatWindow() {
     );
     await conversation.send(outgoingMessage);
     console.log(conversation);
-    await fetchAllMessages();
+    await fetchAllMessages(peerAddress);
     setOutgoingMessage("");
   };
 
-  const fetchAllMessages = async () => {
+  const fetchAllMessages = async (peerAddress: string) => {
     const xmtpClient = await xmtp_client;
     if (!xmtpClient) {
       initXmtp();
@@ -110,7 +110,7 @@ export default function ChatWindow() {
 
   const setChats = async (e: any) => {
     setPeerAddress(e);
-    await fetchAllMessages();
+    await fetchAllMessages(e);
   };
 
   return (

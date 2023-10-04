@@ -18,6 +18,8 @@
     "@siddomains/sidjs": "^0.1.29",
     "@tokenbound/sdk": "^0.3.7",
     "@wormhole-foundation/wormhole-connect": "^0.1.1",
+    "@xmtp/react-sdk": "^2.1.0",
+    "@xmtp/xmtp-js": "^11.1.1",
     "ethers": "5.7.2",
     "moralis": "^2.23.1",
     "next": "latest",
