@@ -12,12 +12,19 @@ import Card from "@/components/Card";
 import { useAccount, useWalletClient, useNetwork } from "wagmi";
 import { parseEther } from "viem";
 import { getUser } from "@/components/polybase";
+import Moralis from "moralis";
+
+Moralis.start({
+  apiKey: "8jm7oAF328P1mSXJmbLRqybViO1jTvakuRCqNjhqwqXu96FeJxFPT290ezEXmfbA",
+});
 
 export default function Dashboard() {
   const { address, isConnecting, isDisconnected } = useAccount();
   const { data: walletClient } = useWalletClient();
   const { chain } = useNetwork();
   const [erc6551Account, setErc6551Account] = useState<`0x${string}`>();
+  const [spaceID, setSpaceID] = useState<string>();
+  const [nftData, setNftData] = useState<any[]>();
 
   const sendTransaction = async (
     to: `0x${string}`,
@@ -42,21 +49,35 @@ export default function Dashboard() {
 
     console.log(executedCall);
   };
+
   useEffect(() => {
     if (address) {
       getUserData(address);
+      getUserNFTs(`0xB72a04B01BB80DfD6a42ea8E0907B892286113F2`);
     }
   }, []);
 
-  const getUserData = (address: `0x${string}`) => {
-    const data = getUser(address);
+  const getUserData = async (address: `0x${string}`) => {
+    const data = await getUser(address);
+    setSpaceID(data?.spaceId);
+  };
+
+  const getUserNFTs = async (address: `0x${string}`) => {
+    const eth_response = await Moralis.EvmApi.nft.getWalletNFTs({
+      address,
+      chain: chain?.id,
+    });
+
+    const eth_result = eth_response.toJSON().result;
+    console.log(eth_result);
+    setNftData(eth_result);
   };
 
   return (
     <div className=" w-full min-h-screen">
       <h1 className=" text-center mt-16 text-lg">
         User Current SpaceID:{" "}
-        <span className=" underline">kushagra.sarathe</span>
+        <span className=" underline">{spaceID && spaceID}</span>
       </h1>
       <div className=" text-center mt-4 text-lg">
         User Wallet Balance: <span className=" underline">500 USDC</span>
@@ -75,7 +96,15 @@ export default function Dashboard() {
             className=" mt-5 flex items-center flex-wrap max-w-6xl mx-auto gap-5 justify-center w-full"
             value={"nfts"}
           >
-            <Card img={img} title={"NFT 1"} desc={"NFT Details"} />
+            {nftData ? (
+              nftData.map((nft) => (
+                <Card img={img} title={nft.name} desc={"NFT Details"} />
+              ))
+            ) : (
+              <a>No NFTs found</a>
+            )}
+
+            {/* <Card img={img} title={"NFT 1"} desc={"NFT Details"} /> */}
           </TabPanel>
           <TabPanel
             className=" mt-5 flex items-center flex-wrap max-w-6xl mx-auto gap-5 justify-center w-full"
