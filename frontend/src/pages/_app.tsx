@@ -14,6 +14,7 @@ import {
   bscTestnet,
   arbitrumNova,
   polygonMumbai,
+  sepolia
 } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
@@ -32,6 +33,7 @@ const { chains, publicClient } = configureChains(
     bsc,
     bscTestnet,
     arbitrumNova,
+    sepolia
   ],
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID as string }),
@@ -51,15 +53,17 @@ const wagmiConfig = createConfig({
   publicClient,
 });
 
+
+
 export default function App({ Component, pageProps }: AppProps) {
   const path = usePathname();
-
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
-        {/* {path !== "/chat" && <Navbar />} */}
-        <Navbar />
-        <Component {...pageProps} />
+          {/* {path !== "/chat" && <Navbar />} */}
+          <Navbar />
+          <Component {...pageProps} />
+  
       </RainbowKitProvider>
     </WagmiConfig>
   );

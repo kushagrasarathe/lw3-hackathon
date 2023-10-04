@@ -72,7 +72,7 @@ const Streamr = () => {
 
   const getAllPermissions = async () => {
     const permissions = await client.getPermissions(
-      "0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/mychat"
+      "0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/chat"
     );
     console.log(permissions);
   };
@@ -81,7 +81,7 @@ const Streamr = () => {
     <div className="flex flex-col">
       <button
         onClick={() =>
-          startSubscribing("0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/mychat")
+          startSubscribing("0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/chat")
         }
       >
         subscribe
@@ -90,8 +90,8 @@ const Streamr = () => {
       <button
         onClick={() =>
           writeAMessageToStream(
-            "0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/mychat",
-            "yo"
+            "0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/chat",
+            "ken"
           )
         }
       >
@@ -99,7 +99,7 @@ const Streamr = () => {
       </button>
       <button
         onClick={() =>
-          getStream("0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/mychat")
+          getStream("0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/chat")
         }
       >
         get
@@ -107,7 +107,7 @@ const Streamr = () => {
       <button
         onClick={() =>
           grantPermissionToMessage(
-            "0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/mychat",
+            "0x72D7968514E5e6659CeBB5CABa7E02CFf8eda389/chat",
             "0x8d7A86A304890abaA30Ef6a2aAd037531C071D37"
           )
         }
