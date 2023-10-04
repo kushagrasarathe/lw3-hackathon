@@ -1,12 +1,28 @@
 "use client";
+import {
+  resolveDomain,
+  resolveDomainARB,
+  resolveDomainBNB,
+  resolveDomainETH,
+} from "@/components/spaceID";
 import { Button, Input, Option, Select } from "@material-tailwind/react";
 import { onChange } from "@material-tailwind/react/types/components/select";
+// import WormholeBridge, {
+//   WormholeConnectConfig,
+// } from "@wormhole-foundation/wormhole-connect";
 import React, { useState } from "react";
 
 export default function Pay() {
   const [amount, setAmount] = useState<number | null>(null);
   const [receiver, setReceiver] = useState<string | null>(null);
   const [selectedToken, setSelectedToken] = useState<string>("");
+  const [resolvedAddress, setResolvedAddress] = useState<`0x${string}`>();
+
+  // const config: WormholeConnectConfig = {
+  //   env: "mainnet",
+  //   networks: ["arbitrum", "bsc", "ethereum"],
+  //   mode: 'light'
+  // };
 
   const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
@@ -20,7 +36,9 @@ export default function Pay() {
     }
   };
 
-  const handleReceiverChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleReceiverChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const inputValue = event.target.value;
     setReceiver(inputValue);
   };
@@ -32,6 +50,31 @@ export default function Pay() {
       setSelectedToken(newValue);
     }
   };
+
+  const searchDomain = async () => {
+    console.log(receiver);
+    if (receiver?.endsWith(".eth")) {
+      console.log(`ETHDomain`);
+
+      const data = await resolveDomainETH(receiver);
+      // console.log(data);
+
+      setResolvedAddress(data);
+    } else if (receiver?.endsWith(".bnb")) {
+      console.log(`BNBDomain`);
+
+      const data = await resolveDomainBNB(receiver);
+      setResolvedAddress(data);
+    } else if (receiver?.endsWith(".arb")) {
+      console.log(`ARBDomain`);
+      // console.log(data);
+
+      const data = await resolveDomainARB(receiver);
+      setResolvedAddress(data?.arbitrum1_address);
+    }
+  };
+
+  const transferFundViaBridge = async () => {};
 
   return (
     <div className=" min-h-screen flex justify-center items-center ">
@@ -48,6 +91,9 @@ export default function Pay() {
           value={receiver || ""}
           onChange={handleReceiverChange}
         />
+        <div className=" text-lg mb- self-start">
+          {resolvedAddress && resolvedAddress}
+        </div>
         <label className=" self-start -mb-3" htmlFor="">
           {" "}
           Select Token
@@ -84,10 +130,14 @@ export default function Pay() {
           color="blue"
           fullWidth
           className=" text-base text-white tracking-wide font-normal"
+          onClick={() => {
+            searchDomain();
+          }}
         >
-          Transfer Funds
+          SearchDomain
         </Button>
       </div>
+      {/* <WormholeBridge config={config} /> */}
     </div>
   );
 }

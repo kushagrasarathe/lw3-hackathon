@@ -23,7 +23,7 @@ async function resolveDomain(name: string): Promise<
 }
 
 async function resolveDomainBNBTest(name: string): Promise<{
-  address: any;
+  address: `0x${string}`;
 }> {
   const rpc = "https://data-seed-prebsc-1-s1.binance.org:8545/";
   const provider = new ethers.providers.JsonRpcProvider(rpc);
@@ -37,7 +37,7 @@ async function resolveDomainBNBTest(name: string): Promise<{
 }
 
 async function resolveDomainBNB(name: string): Promise<{
-  address: any;
+  address: `0x${string}`;
 }> {
   const rpc = "https://binance.llamarpc.com";
   const provider = new ethers.providers.JsonRpcProvider(rpc);
@@ -51,8 +51,8 @@ async function resolveDomainBNB(name: string): Promise<{
 }
 
 async function resolveDomainARB(name: string): Promise<{
-  arbitrum1_address: any;
-  arbirum_nova_address: any;
+  arbitrum1_address: `0x${string}`;
+  arbirum_nova_address: `0x${string}`;
 }> {
   const rpc = "https://arb1.arbitrum.io/rpc"; //Arbitrum One rpc
   const provider = new ethers.providers.JsonRpcProvider(rpc);
@@ -73,7 +73,7 @@ async function resolveDomainARB(name: string): Promise<{
 }
 
 async function resolveDomainETH(name: string): Promise<{
-  address: any;
+  address: `0x${string}`;
 }> {
   const rpc = "https://eth.llamarpc.com";
   const provider = new ethers.providers.JsonRpcProvider(rpc);

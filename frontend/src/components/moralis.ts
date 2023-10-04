@@ -75,6 +75,10 @@ async function getSpaceIDTokensAll(address: `0x${string}`): Promise<{
   };
 }
 
+Moralis.start({
+  apiKey: "8jm7oAF328P1mSXJmbLRqybViO1jTvakuRCqNjhqwqXu96FeJxFPT290ezEXmfbA",
+});
+
 async function getSpaceIDTokensChain(
   address: `0x${string}`,
   chain: any
