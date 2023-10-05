@@ -235,12 +235,12 @@ export default function ChatWindow() {
                           messages.map((message: any) => {
                             return (
                               <div>
-                                <div className="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl mt-3">
-                                  <div>
-                                    {message.peerAddress !== peerAddress &&
-                                      message.content}
-                                  </div>
-                                </div>
+                                {message.senderAddress != peerAddress &&
+                                  message.content && (
+                                    <div className="relative mr-3 text-sm text-black py-2 px-4 shadow rounded-xl">
+                                      <div>{message.content}</div>
+                                    </div>
+                                  )}
                               </div>
                             );
                           })
@@ -259,13 +259,12 @@ export default function ChatWindow() {
                         messages.map((message: any) => {
                           return (
                             <div>
-                              <div className="relative mr-3 text-sm bg-black text-white py-2 px-4 shadow rounded-xl">
-                                <div>
-                                  {message.peerAddress == peerAddress &&
-                                    message.content &&
-                                    message.content}
-                                </div>
-                              </div>
+                              {message.senderAddress == peerAddress &&
+                                message.content && (
+                                  <div className="relative mr-3 text-sm bg-black text-white py-2 px-4 shadow rounded-xl">
+                                    <div>{message.content}</div>
+                                  </div>
+                                )}
                             </div>
                           );
                         })

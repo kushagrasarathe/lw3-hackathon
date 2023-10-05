@@ -69,7 +69,7 @@ const getUser = async (userAddress: string) => {
   try {
     const { data } = await db.collection("User2").record(userAddress).get();
     console.log(data);
-    return data.spaceId ? data.spaceId : userAddress;
+    return data;
   } catch (error) {
     console.log(error);
   }

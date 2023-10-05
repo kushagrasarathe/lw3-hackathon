@@ -25,6 +25,7 @@ export default function Dashboard() {
   const { chain } = useNetwork();
   const [erc6551Account, setErc6551Account] = useState<`0x${string}`>();
   const [spaceID, setSpaceID] = useState<string>();
+
   const [nftData, setNftData] = useState<any[]>();
 
   const sendTransaction = async (
@@ -65,6 +66,22 @@ export default function Dashboard() {
   const getUserData = async (address: `0x${string}`) => {
     const data = await getUser(address);
     setSpaceID(data?.spaceId);
+    if (!walletClient) return;
+    if (!chain) return;
+    const tokenboundClient = new TokenboundClient({
+      walletClient,
+      chainId: chain?.id,
+    });
+
+    const tokenBoundAccount = tokenboundClient.getAccount({
+      tokenContract: data.tokenContract,
+      tokenId: data.tokenId,
+    });
+
+    console.log(tokenBoundAccount);
+    if (tokenBoundAccount) {
+      setErc6551Account(tokenBoundAccount);
+    }
   };
 
   const getUserNFTs = async (address: `0x${string}`) => {
@@ -80,9 +97,13 @@ export default function Dashboard() {
 
   return (
     <div className=" w-full min-h-screen">
-      <h1 className=" text-center mt-16 text-lg">
+      <h1 className=" text-center mt-24 text-lg">
         User Current SpaceID:{" "}
         <span className=" underline">{spaceID && spaceID}</span>
+      </h1>
+      <h1 className=" text-center mt-4 text-lg">
+        ERC6551 tokenBoundAccount:{" "}
+        <span className=" underline">{erc6551Account && erc6551Account}</span>
       </h1>
       <div className=" text-center mt-4 text-lg">
         User Wallet Balance: <span className=" underline">500 USDC</span>
