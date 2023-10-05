@@ -53,10 +53,8 @@ export default function Home() {
               </div>
             </div>
             <p className=" max-w-3xl text-xl tracking-wide font-semibold text-center mx-auto mt-5">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde
-              doloribus nobis, nemo perferendis voluptatem laudantium ut
-              adipisci dolor ex blanditiis rerum repellat qui. Nostrum, omnis
-              adipisci vel accusantium magnam cupiditate.
+              Connecting Universes: ERC6551 Tokens, Interstellar Transfers and
+              Decentralized Space Messaging
             </p>
             <button className=" text-white font-normal tracking-wide text-lg mt-5 self-start z-20 bg-[#130f06] cursor-pointer rounded-md active:scale-95 transition-all ease-in-out px-3 py-2 ">
               {/* <span className="text-transparent font-normal tracking-wide text-lg bg-clip-text bg-gradient-to-r from-black -400 to-black -600"> */}
@@ -85,7 +83,39 @@ export default function Home() {
           alt="bg"
         /> */}
       </main>
-      <div className=" min-h-screen bg-[#0f0e11]">s</div>
+      <div className=" min-h-screen flex flex-col w-6/12 mx-auto items-center justify-center ">
+        <h1 className=" text-4xl self-start mb-8 font-semibold tracking-wider">
+          SecureID Features
+        </h1>
+        <div className=" gap-3 grid grid-cols-6  ">
+          <div className=" p-5 rounded-lg col-span-6 bg-cyan-300">
+            <h1 className=" text-2xl font-semibold tracking-wider mb-3">
+              ERC6551 Tokens
+            </h1>
+            <p className=" text-lg tracking-wide">
+              SecureID uses ERC6551 to enable smart-contract wallets for SpaceID
+              owners.
+            </p>
+          </div>
+          <div className=" p-5 rounded-lg col-span-4 bg-indigo-600 text-white ">
+            <h1 className=" text-2xl font-semibold tracking-wider mb-3">
+              Interstellar Transfers
+            </h1>
+            <p className=" text-lg tracking-wide">
+              SecureID supports crosschain asset transfers, you can share assets
+              with anoyone by just using your SpaceID
+            </p>
+          </div>
+          <div className=" p-5 rounded-lg col-span-2 bg-amber-300">
+            <h1 className=" text-2xl font-semibold tracking-wider mb-3">
+              Decentralized Messaging
+            </h1>
+            <p className=" text-lg tracking-wide">
+              You can also send messages and vibe with other SpaceID users :D
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
