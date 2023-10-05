@@ -120,7 +120,7 @@ export default function ChatWindow() {
           {/* <div className="flex flex-row items-center justify-start h-12 w-full">
             <div className="ml-2 font-bold text-2xl">SecureID</div>
           </div> */}
-          <div className="flex flex-col items-center  border border-gray-200 mt- w-full py-6 px-4 rounded-lg">
+          <div className="flex flex-col items-center  borde border-gray-200 mt- w-full py-6 px-4 rounded-lg">
             {/* <div className="h-20 w-20 rounded-full border overflow-hidden">
               <img
                 src="https://avatars3.githubusercontent.com/u/2763884?s=128"
@@ -128,17 +128,17 @@ export default function ChatWindow() {
                 className="h-full w-full"
               />
             </div> */}
-            <div className="text-sm font-semibold mt-2">Aminos Co.</div>
-            <div className="text-xs text-gray-500">Lead UI/UX Designer</div>
+            {/* <div className="text-sm font-semibold mt-2">Aminos Co.</div> */}
+            {/* <div className="text-xs text-gray-500">Lead UI/UX Designer</div> */}
           </div>
           <div className="flex flex-col mt-8">
             <div className="flex flex-row items-center justify-between text-sm">
               <span className="font-bold">Active Chats</span>
-              <span className="flex items-center justify-center bg-gray-300 h-4 w-4 rounded-full">
+              {/* <span className="flex items-center justify-center bg-gray-300 h-4 w-4 rounded-full">
                 4
-              </span>
+              </span> */}
             </div>
-            <div className="flex flex-col space-y-1 mt-4 -mx-2 h-48 overflow-y-auto">
+            <div className="flex flex-col space-y-1 mt-4 -mx-2 h-[70vh] overflow-y-auto">
               {/* <div className="flex items-center justify-center h-8 w-8 bg-gray-200 rounded-full">
                   M
                 </div> */}
@@ -150,7 +150,9 @@ export default function ChatWindow() {
                         onClick={() => setChats(user.peerAddress)}
                         className="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2"
                       >
-                        {user.peerAddress}
+                        <span className=" text-base break-words max-w-[200px]">
+                          {user.peerAddress}
+                        </span>
                       </button>
                     );
                   })}
@@ -160,6 +162,8 @@ export default function ChatWindow() {
                 </div>*/}
 
               {/* <button className="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2"> */}
+            </div>
+            <div className=" absolute bottom-10">
               <div className="ml-2 text-base font-semibold text-cneter">
                 Add Chat
               </div>
@@ -172,9 +176,9 @@ export default function ChatWindow() {
               ></input>
               <button
                 onClick={() => startAConversation()}
-                className="px-3 py-1 rounded-xl border border-black mt-4"
+                className="px-3 py-1 rounded-xl border ml-2 border-black mt-4 active:scale-95 transition-all ease-in-out"
               >
-                add
+                Add
               </button>
             </div>
           </div>
@@ -185,20 +189,20 @@ export default function ChatWindow() {
               <div className="flex flex-col h-full">
                 <div className="grid grid-cols-12 gap-y-2">
                   <div className="col-start-1 col-end-8 p-3 rounded-lg">
-                    <div className="flex flex-col items-center">
+                    <div className=" w-full flex flex-col items-center pt-12">
                       {/* <div className="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-100 flex-shrink-0">
                         A
                       </div> */}
                       {messages ? (
                         messages.map((message: any) => {
                           return (
-                            <div className="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl mt-3">
+                            <div className=" relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl mt-5">
                               <div>{message.content}</div>
                             </div>
                           );
                         })
                       ) : (
-                        <div>
+                        <div className=" mt-[30vh] ml-[30vw] w-full flex items-center justify-center">
                           <div role="status">
                             <svg
                               aria-hidden="true"
@@ -216,7 +220,7 @@ export default function ChatWindow() {
                                 fill="currentFill"
                               />
                             </svg>
-                            <span className="sr-only">Loading...</span>
+                            {/* <span className="sr-only">Loading...</span> */}
                           </div>
                         </div>
                       )}
@@ -259,6 +263,7 @@ export default function ChatWindow() {
                 <div className="relative w-full">
                   <input
                     type="text"
+                    placeholder="Enter your message here..."
                     className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
                     onChange={(e) => setOutgoingMessage(e.target.value)}
                     value={outgoingMessage}

@@ -27,10 +27,10 @@ export default function Home() {
   // get the Address and check the current chain
   return (
     // bg-gradient-to-r from-cyan-50 to-cyan-100
-    <div className="bg-[#fed385">
+    <div className=" z-30  ">
       {/* // hero */}
       {/* bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-violet-300 to-violet-400 */}
-      <main className=" hero  mt2 relative md:w-11/12 mx-auto  min-h-screen flex flex-col items-center justify-center w-full">
+      <main className=" hero  mt-32 relative md:w-11/12 mx-auto  min-h-screen flex flex-col items-center justify-center w-full">
         <div className="   -mt-24 relative h-full flex items-center justify-between  w-full font-bold tracking-wide">
           <div className=" w-full z-20 text-center ">
             {/* <div className=" z-10 self-start text-start font-bold mb-3 text-5xl tracking-wide ml-10 bg-clip-text drop-shadow-lg text-transparent bg-bttom bg-[url('../assets/bg.jpg')]">
@@ -83,36 +83,42 @@ export default function Home() {
           alt="bg"
         /> */}
       </main>
-      <div className=" min-h-screen flex flex-col w-6/12 mx-auto items-center justify-center ">
-        <h1 className=" text-4xl self-start mb-8 font-semibold tracking-wider">
-          SecureID Features
-        </h1>
-        <div className=" gap-3 grid grid-cols-6  ">
-          <div className=" p-5 rounded-lg col-span-6 bg-cyan-300">
-            <h1 className=" text-2xl font-semibold tracking-wider mb-3">
-              ERC6551 Tokens
-            </h1>
-            <p className=" text-lg tracking-wide">
-              SecureID uses ERC6551 to enable smart-contract wallets for SpaceID
-              owners.
-            </p>
-          </div>
-          <div className=" p-5 rounded-lg col-span-4 bg-indigo-600 text-white ">
-            <h1 className=" text-2xl font-semibold tracking-wider mb-3">
-              Interstellar Transfers
-            </h1>
-            <p className=" text-lg tracking-wide">
-              SecureID supports crosschain asset transfers, you can share assets
-              with anoyone by just using your SpaceID
-            </p>
-          </div>
-          <div className=" p-5 rounded-lg col-span-2 bg-amber-300">
-            <h1 className=" text-2xl font-semibold tracking-wider mb-3">
-              Decentralized Messaging
-            </h1>
-            <p className=" text-lg tracking-wide">
-              You can also send messages and vibe with other SpaceID users :D
-            </p>
+      <div>
+        <div
+          className=" z-0  w-full fixed bottom-0 pattern-cross pattern-indigo-500 pattern-bg-white 
+          pattern-size-6 pattern-opacity-5 min-h-screen"
+        ></div>
+        <div className="  min-h-screen flex flex-col w-6/12 mx-auto items-center justify-center ">
+          <h1 className=" z-20 text-4xl self-start mb-8 font-semibold tracking-wider">
+            SecureID Features
+          </h1>
+          <div className=" z-20 gap-3 grid grid-cols-6  ">
+            <div className=" shadow-xl p-5 rounded-lg col-span-6 bg-cyan-300">
+              <h1 className=" text-2xl font-semibold tracking-wider mb-3">
+                ERC6551 Tokens
+              </h1>
+              <p className=" text-lg tracking-wide">
+                SecureID uses ERC6551 to enable smart-contract wallets for
+                SpaceID owners.
+              </p>
+            </div>
+            <div className="shadow-xl p-5 rounded-lg col-span-4 bg-indigo-600 text-white ">
+              <h1 className=" text-2xl font-semibold tracking-wider mb-3">
+                Interstellar Transfers
+              </h1>
+              <p className=" text-lg tracking-wide">
+                SecureID supports crosschain asset transfers, you can share
+                assets with anoyone by just using your SpaceID
+              </p>
+            </div>
+            <div className="shadow-xl p-5 rounded-lg col-span-2 bg-amber-300">
+              <h1 className=" text-2xl font-semibold tracking-wider mb-3">
+                Decentralized Messaging
+              </h1>
+              <p className=" text-lg tracking-wide">
+                You can also send messages and vibe with other SpaceID users :D
+              </p>
+            </div>
           </div>
         </div>
       </div>

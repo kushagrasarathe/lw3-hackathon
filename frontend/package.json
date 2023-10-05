@@ -40,6 +40,7 @@
     "eslint-config-next": "latest",
     "postcss": "latest",
     "tailwindcss": "latest",
+    "tailwindcss-bg-patterns": "^0.2.0",
     "typescript": "latest"
   }
 }

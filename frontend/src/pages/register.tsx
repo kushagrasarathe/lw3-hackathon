@@ -150,30 +150,39 @@ export default function Register() {
     <div className=" min-h-screen flex items-center justify-center">
       <div className=" max-w-xl bg-white w-6/12 border border-borderPrimary mx-auto p-8 rounded-2xl flex flex-col items-center justify-center">
         {!isDisconnected ? (
-          <label className=" self-start w-full " htmlFor="space_id">
-            Select Your SpaceID
+          <div className=" flex flex-col gap-y-2">
+            {/* Select Your SpaceID */}
+
+            <div className="">
+              Your SpaceID: <span className=" font-semibold tracking-wide underline">{spaceID && spaceID}</span>
+            </div>
+            <div className=" flex items-center justify-start gap-2 mt-3">
+              <button
+                className=" bg-blue-500 py-1.5 px-4 text-white rounded-md active:scale-95 transition-all ease-in-out "
+                onClick={() => {
+                  registerERC6551();
+                }}
+              >
+                Register
+              </button>
+              <br />
+              <button
+                className=" bg-blue-500 py-1.5 px-4 text-white rounded-md active:scale-95 transition-all ease-in-out "
+                onClick={() => {
+                  storeUserData();
+                }}
+              >
+                Store
+              </button>
+            </div>
             <br />
-            {spaceID && spaceID}
+            <div className=" max-w-md break-words mt-2">
+              {tokenData && tokenData.tokenContract}
+            </div>
             <br />
-            <button
-              onClick={() => {
-                registerERC6551();
-              }}
-            >
-              Register
-            </button>
-            <br />
-            <button
-              onClick={() => {
-                storeUserData();
-              }}
-            >
-              Store
-            </button>
-            <br />
-            {tokenData && tokenData.tokenContract}
-            <br />
-            {tokenData && tokenData.tokenId}
+            <div className=" max-w-md break-words ">
+              {tokenData && tokenData.tokenId}
+            </div>
             {/* <select
               name="space_id"
               className=" mt-2 w-full p-3 bg-transparent border border-gray-400 rounded-lg"
@@ -188,7 +197,7 @@ export default function Register() {
               <option value="eth">ETH</option>
               <option value="matic">MATIC</option>
             </select> */}
-          </label>
+          </div>
         ) : (
           <div className=" flex flex-col items-center justify-center gap-y-2">
             <h1 className=" text-lg text-center">Please connect your wallet</h1>
