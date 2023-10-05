@@ -33,7 +33,8 @@ export default function ChatWindow() {
   }, [xmtp_client]);
 
   const initXmtp = async () => {
-    const provider = new providers.Web3Provider(window.ethereum);
+    // @ts-ignore
+    const provider = new providers.Web3Provider(window?.ethereum);
     const [address] = await provider.listAccounts();
     const signer = provider.getSigner(address);
     const xmtp = await Client.create(signer, { env: "production" });
