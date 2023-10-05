@@ -1,6 +1,3 @@
-import bg from "@assets/hero-bg.gif";
-import mask from "@assets/mask.png";
-import Image from "next/image";
 import {
   resolveDomain,
   resolveDomainETH,
@@ -10,6 +7,7 @@ import {
 import { Inter } from "next/font/google";
 import * as React from "react";
 import { useNetwork } from "wagmi";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -56,11 +54,11 @@ export default function Home() {
               Connecting Universes: ERC6551 Tokens, Interstellar Transfers and
               Decentralized Space Messaging
             </p>
-            <button className=" text-white font-normal tracking-wide text-lg mt-5 self-start z-20 bg-[#130f06] cursor-pointer rounded-md active:scale-95 transition-all ease-in-out px-3 py-2 ">
+            <Link href={'/register'} className=" text-white font-normal tracking-wide text-lg mt-5 self-start z-20 bg-[#130f06] cursor-pointer rounded-md active:scale-95 transition-all ease-in-out px-3 py-2 ">
               {/* <span className="text-transparent font-normal tracking-wide text-lg bg-clip-text bg-gradient-to-r from-black -400 to-black -600"> */}
               Get Started
               {/* </span> */}
-            </button>
+            </Link>
           </div>
           {/* <Image
             className=" opacity-0 blur-sm mt-10 max-w-4xl absolute top-1/2 left-1/2 transform rotate-[18deg] -translate-x-1/2 -translate-y-1/2 z-0"
