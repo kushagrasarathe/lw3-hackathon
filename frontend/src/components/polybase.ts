@@ -65,11 +65,11 @@ const setERC6551Acc = async (
   }
 };
 
-const getUser = async (userAddress: `0x${string}`) => {
+const getUser = async (userAddress: string) => {
   try {
     const { data } = await db.collection("User2").record(userAddress).get();
     console.log(data);
-    return data;
+    return data.spaceId ? data.spaceId : userAddress;
   } catch (error) {
     console.log(error);
   }
